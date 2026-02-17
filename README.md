@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next-Redis-App
+
+Next-Redis-App เป็นโปรเจกต์ตัวอย่างที่พัฒนาด้วย **Next.js + Redis** สำหรับทดลองระบบ Cache และการทำงานแบบเรียลไทม์ผ่าน Redis Dashboard ผู้ใช้สามารถตรวจสอบสถานะ Redis และทดสอบคำสั่งพื้นฐานได้จากหน้าเว็บเดียว
+
+---
+
+## Features
+
+- ตรวจสอบสถานะการเชื่อมต่อ Redis (Health Check)
+- แสดงข้อมูลระบบจาก Redis (INFO, Memory, Uptime, Clients, Keys)
+- Realtime Dashboard (Auto Refresh)
+- บันทึกข้อมูลลง Redis (SET + TTL)
+- ดึงข้อมูลจาก Redis (GET)
+- ล้างข้อมูลทั้งหมด (FLUSHDB)
+- UI แบบ Dark / Glass Dashboard
+- รองรับการใช้งาน Redis ผ่าน Docker
+
+---
+
+## Tech Stack
+
+**Frontend**
+- Next.js (App Router)
+- React
+- Tailwind CSS v4
+
+**Backend / Cache**
+- Redis
+- ioredis
+- Next.js Route Handlers (REST API)
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone Project
+
+```bash
+git clone https://github.com/Pachared42/Next-Redis-App.git
+cd Next-Redis-App
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Run Redis (Docker)
+
+```bash
+docker run -d \
+  --name redis-local \
+  -p 6379:6379 \
+  redis:7
+```
+
+### 4. Run Next.js
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+เปิดใน Browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Redis Configuration
 
-To learn more about Next.js, take a look at the following resources:
+ไฟล์: `lib/redis.ts`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```ts
+import Redis from "ioredis";
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+const redis = new Redis({
+  host: "127.0.0.1",
+  port: 6379,
+});
 
-## Deploy on Vercel
+export default redis;
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|------------|
+| `/api/redis/health` | GET | ตรวจสอบสถานะ Redis |
+| `/api/redis/set` | POST | บันทึกค่าเข้า Redis |
+| `/api/redis/get` | GET | อ่านค่าจาก Redis |
+| `/api/redis/flush` | POST | ล้างข้อมูลทั้งหมด |
+
+---
+
+## Use Cases
+
+- ทดลอง Redis Cache
+- Redis Monitoring Dashboard
+- เรียนรู้การทำงานของ Redis + Next.js
+- ตัวอย่างระบบ Realtime
+- Debug การเชื่อมต่อ Redis
+
+---
+
+## Disclaimer
+
+โปรเจกต์นี้จัดทำขึ้นเพื่อการศึกษาและทดลองใช้งานเท่านั้น
