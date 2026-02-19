@@ -4,7 +4,7 @@ Next-Redis-App เป็นโปรเจกต์ตัวอย่างท�
 
 ---
 
-## Features
+## คุณสมบัติ
 
 - ตรวจสอบสถานะการเชื่อมต่อ Redis (Health Check)
 - แสดงข้อมูลระบบจาก Redis (INFO, Memory, Uptime, Clients, Keys)
@@ -17,7 +17,7 @@ Next-Redis-App เป็นโปรเจกต์ตัวอย่างท�
 
 ---
 
-## Tech Stack
+## เทคโนโลยีสแต็ค
 
 **Frontend**
 - Next.js (App Router)
@@ -31,22 +31,22 @@ Next-Redis-App เป็นโปรเจกต์ตัวอย่างท�
 
 ---
 
-## Getting Started
+## เริ่มต้นใช้งาน
 
-### 1. Clone Project
+### 1. โครงการโคลน
 
 ```bash
 git clone https://github.com/Pachared42/Next-Redis-App.git
 cd Next-Redis-App
 ```
 
-### 2. Install Dependencies
+### 2. ติดตั้งส่วนประกอบที่จำเป็น
 
 ```bash
 npm install
 ```
 
-### 3. Run Redis (Docker)
+### 3. เรียกใช้งาน Redis (Docker)
 
 ```bash
 docker run -d \
@@ -55,7 +55,7 @@ docker run -d \
   redis:7
 ```
 
-### 4. Run Next.js
+### 4. เรียกใช้ Next.js
 
 ```bash
 npm run dev
@@ -69,7 +69,7 @@ http://localhost:3000
 
 ---
 
-## Redis Configuration
+## การกำหนดค่า Redis
 
 ไฟล์: `lib/redis.ts`
 
@@ -86,7 +86,7 @@ export default redis;
 
 ---
 
-## API Endpoints
+## จุดเชื่อมต่อ API
 
 | Endpoint | Method | Description |
 |----------|--------|------------|
@@ -97,7 +97,7 @@ export default redis;
 
 ---
 
-## Use Cases
+## กรณีศึกษา
 
 - ทดลอง Redis Cache
 - Redis Monitoring Dashboard
@@ -107,6 +107,6 @@ export default redis;
 
 ---
 
-## Disclaimer
+## ใบอนุญาต
 
 โปรเจกต์นี้จัดทำขึ้นเพื่อการศึกษาและทดลองใช้งานเท่านั้น
